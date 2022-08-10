@@ -1,0 +1,55 @@
+plugins {
+    id 'maven-publish'
+    id 'net.researchgate.release' version '2.8.1'
+    id 'io.spring.dependency-management' version '1.0.7.RELEASE'
+    id 'java'
+    id 'idea'
+}
+
+group = 'tech.jhipster'
+
+gradle.projectsEvaluated {
+    tasks.withType(JavaCompile) {
+        options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId 'tech.jhipster'
+            from components.java
+        }
+    }
+    
+    repositories {
+        if (project.hasProperty('github_username') && project.hasProperty('github_password')) {
+            maven {
+                name = "GitHubPackages"
+                url = uri("https://maven.pkg.github.com/dmadunic/jhipster-service-lib")
+                credentials {
+                    username github_username
+                    password github_password
+                }
+            }
+        }
+    }
+}
+
+afterReleaseBuild.dependsOn publish
+repositories {
+    mavenCentral()
+}
+
+dependencyManagement {
+    imports {
+        mavenBom("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
+    }
+}
+
+dependencies {
+    implementation "org.springframework.boot:spring-boot-starter:${springBootVersion}"
+    implementation "org.springframework.data:spring-data-jpa:${springBootVersion}"
+    implementation "javax.persistence:javax.persistence-api:${javaxpersistenceApiVersion}"
+    //testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+}
