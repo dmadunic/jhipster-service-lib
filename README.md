@@ -1,19 +1,21 @@
 # gh-demo-lib
 
-[![CI Build](https://github.com/dmadunic/gh-demo-lib/actions/workflows/ci.yml/badge.svg)](https://github.com/dmadunic/gh-demo-lib/actions/workflows/ci.yml)
+[![CI Build](https://github.com/dmadunic/jhipster-service-lib/actions/workflows/ci.yml/badge.svg)](https://github.com/dmadunic/jhipster-service-lib/actions/workflows/ci.yml)
 ![](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white&style=flat)
 ![](https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white&style=flat)
 
 
-Demo Java library repository, used to test library publishing to maven repository on GitHUb using GitHub actions ci/cd pipelines.
+This jar contains package: tech.jhipster.service from "the tech.jhipster:jhipster-dependencies" library.
+This version is based on the version 7.9.1 of JHipster.
 
-**Current project version 0.1.3**
+
+**Current project version 0.0.1**
 ## Usage
 To use this jar in your project add the following to the dependencies section:
 
 ```groovy
 dependencies {
-    implementation "com.ag04.utils:gh-demo-lib:0.1.3"
+    implementation "tech.jhipster:jhipster-service-lib:0.0.1"
     ...
 }
 ```
@@ -21,9 +23,9 @@ dependencies {
 
 ```xml
 <dependency>
-  <groupId>com.ag04.utils</groupId>
-  <artifactId>gh-demo-lib</artifactId>
-  <version>0.1.3</version>
+  <groupId>tech.jhipster</groupId>
+  <artifactId>jhipster-service-lib</artifactId>
+  <version>0.0.1</version>
 </dependency>
 ```
 (pom.xml)
@@ -38,7 +40,7 @@ repositories {
     mavenCentral()
     maven {
         name = "GitHubPackages"
-        url = uri("https://maven.pkg.github.com/dmadunic/gh-demo-lib")
+        url = uri("https://maven.pkg.github.com/dmadunic/jhipster-service-lib")
         credentials {
             username = System.getenv("gh_username") ?: props.getProperty("gh_username")
             password = System.getenv("gh_token") ?: props.getProperty("gh_token")
@@ -58,11 +60,11 @@ For more see:
 
 ## Development
 ### Setup (First time)
-1. Clone the repository: `git clone git@github.com:ag04/gh-demo-lib.git`
+1. Clone the repository: `git clone git@github.com:ag04/jhipster-service-lib.git`
 4. Build project with: ` ./gradlew clean build `
 
 ### Manual Release
-Make sure that file gradle.properties in the folder ${USER_HOME}/.gradle/ contains the following two variables defined:
+Make sure that file **gradle.properties** located in the folder `${USER_HOME}/.gradle/` contains the following two variables defined:
 
 * github_username
 * github_password : personal github token to be used to install/update packages
